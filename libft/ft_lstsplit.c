@@ -6,13 +6,13 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 15:45:38 by adenis            #+#    #+#             */
-/*   Updated: 2016/11/22 12:21:19 by adenis           ###   ########.fr       */
+/*   Updated: 2016/11/28 14:20:06 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_lstadd_end(t_list *alst, t_list *new)
+static void			ft_lstadd_end(t_list *alst, t_list *new)
 {
 	if (alst && new && alst->next)
 		ft_lstadd_end(alst->next, new);
@@ -20,7 +20,7 @@ void			ft_lstadd_end(t_list *alst, t_list *new)
 		alst->next = new;
 }
 
-static int		ft_length(char const *s, char c)
+static int			ft_length(char const *s, char c)
 {
 	int		i;
 
@@ -30,7 +30,7 @@ static int		ft_length(char const *s, char c)
 	return (i);
 }
 
-static char		*ft_fill_tab(char const *s, char c)
+static char			*ft_fill_tab(char const *s, char c)
 {
 	char	*str;
 	int		i;
@@ -47,7 +47,7 @@ static char		*ft_fill_tab(char const *s, char c)
 	return (str);
 }
 
-t_list			*ft_lstsplit(char const *s, char c)
+t_list				*ft_lstsplit(char const *s, char c)
 {
 	t_list	*lst;
 	t_list	*new;

@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 16:47:17 by adenis            #+#    #+#             */
-/*   Updated: 2016/11/16 10:35:07 by adenis           ###   ########.fr       */
+/*   Updated: 2016/11/25 10:42:15 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char			**ft_strsplit(char const *s, char c)
 	index = 0;
 	if (s == NULL)
 		return (NULL);
-	tab = (char **)malloc(sizeof(tab) * (ft_count_words(s, c) + 1));
+	tab = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (tab == NULL)
 		return (NULL);
 	while (s[i])
