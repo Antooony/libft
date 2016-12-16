@@ -6,7 +6,7 @@
 #    By: adenis <adenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 16:45:23 by adenis            #+#    #+#              #
-#    Updated: 2016/12/14 22:31:08 by adenis           ###   ########.fr        #
+#    Updated: 2016/12/16 12:45:58 by adenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC				=	gcc
@@ -23,7 +23,7 @@ SRC				=	ft_atoi.c ft_strlcat.c ft_strncmp.c ft_strnstr.c ft_memcmp.c ft_memchr.
 
 HEADER 			=	libft.h
 
-OBJS			=	$(SRC:.c=.o)
+OBJS			=	$(SRC:%.c=%.o)
 
 # COLORS
 C_NO			=	"\033[00m"
