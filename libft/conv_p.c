@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 15:43:18 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 13:33:43 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 15:34:40 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,21 @@ void			ft_convp(va_list ap)
 	g_arg.ret += ft_strlen(str);
 	ft_putstr(str);
 	ft_strdel(&str);
+}
+
+void			ft_sconvp(va_list ap)
+{
+	char	*str;
+
+	str = ft_itoa_base((uintmax_t)va_arg(ap, long), HEXA, 16);
+	if (!ft_strcmp(str, "0") && g_arg.vacc && !g_arg.acc)
+		str[0] = '\0';
+	if (g_arg.vacc)
+		ft_accp(&str);
+	if (g_arg.opt)
+		ft_optp(&str);
+	if (g_arg.len)
+		ft_lenp(&str);
+	g_arg.ret += ft_strlen(str);
+	join_out(str);
 }

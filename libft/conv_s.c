@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 12:39:04 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 13:33:50 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 15:35:01 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,25 @@ void			ft_convs(va_list ap)
 	g_arg.ret += ft_strlen(str);
 	ft_putstr(str);
 	ft_strdel(&str);
+}
+
+void			ft_sconvs(va_list ap)
+{
+	char	*str;
+
+	if (ft_strchr(g_arg.size, 'l'))
+	{
+		ft_convss(ap);
+		return ;
+	}
+	if ((str = va_arg(ap, char *)))
+		str = ft_strdup(str);
+	else
+		str = ft_strdup("(null)");
+	if (g_arg.vacc)
+		ft_accs(&str);
+	if (g_arg.len)
+		ft_lens(&str);
+	g_arg.ret += ft_strlen(str);
+	join_out(str);
 }

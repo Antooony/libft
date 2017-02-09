@@ -6,7 +6,7 @@
 #    By: adenis <adenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 16:45:23 by adenis            #+#    #+#              #
-#    Updated: 2017/02/09 13:50:30 by adenis           ###   ########.fr        #
+#    Updated: 2017/02/09 15:45:48 by adenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC				=	gcc
@@ -31,8 +31,8 @@ SRC				=	ft_atol.c ft_uitoa.c \
  					conv_p.c conv_i.c conv_o.c conv_x.c conv_xx.c conv_c.c \
  					conv_cc.c conv_per.c noconv.c conv.c size_base.c size_int.c \
  					size_u.c conv_u.c conv_uu.c conv_s.c ft_putwchar.c ft_putwstr.c \
- 					wtoa.c conv_ss.c size_z.c various_get.c get_next_line.c 
-
+ 					wtoa.c conv_ss.c size_z.c various_get.c get_next_line.c ft_sprintf.c \
+ 					conv_i_s.c conv_o_s.c conv_ss_s.c conv_u_s.c conv_uu_s.c conv_x_s.c conv_xx_s.c 
 HEADER 			=	libft.h
 
 OBJS			=	$(SRC:%.c=%.o)

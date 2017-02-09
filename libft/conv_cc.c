@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 15:49:17 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 13:33:24 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 15:34:02 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,25 @@ void			ft_convcc(va_list ap)
 	if (!ft_strchr(g_arg.opt, '-') && !c)
 		ft_putwchar(c);
 	ft_strdel(&str);
+}
+
+void			ft_sconvcc(va_list ap)
+{
+	char	*str;
+	wchar_t	c;
+
+	if ((c = va_arg(ap, wchar_t)))
+		str = wtoa(c);
+	else
+	{
+		g_arg.len -= 1;
+		g_arg.ret += 1;
+		str = ft_strnew(0);
+	}
+	if (g_arg.vacc)
+		ft_acccc(&str);
+	if (g_arg.len)
+		ft_lencc(&str);
+	g_arg.ret += ft_strlen(str);
+	join_out(str);
 }

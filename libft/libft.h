@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 16:46:11 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 14:12:14 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 15:46:23 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ typedef struct			s_args
 	int		sign;
 	int		zero;
 	int		max;
+	char	*out;
 }						t_args;
 
 int						get_next_line(const int fd, char **line);
+int						ft_sprintf(char **dest, char *str, ...);
 int						ft_printf(char *str, ...);
 
 char					*ft_checksign(char *str);
@@ -67,6 +69,7 @@ void					ft_conv(va_list ap, char *s, int *i);
 void					ft_noconv(char *s, int *i);
 int						get_wcharlen(int nb);
 
+void					join_out(char *str);
 int						ft_get_acc(char *str, int *i, va_list ap);
 int						ft_get_len(char *str, int *i, va_list ap);
 char					*ft_get_opt(char *str, int *i);
@@ -83,6 +86,21 @@ void					ft_convcc(va_list ap);
 void					ft_convper(void);
 void					ft_convu(va_list ap);
 void					ft_convuu(va_list ap);
+
+void					ft_sconv(va_list ap, char *s, int *i);
+void					ft_snoconv(char *s, int *i);
+void					ft_sconvs(va_list ap);
+void					ft_sconvss(va_list ap);
+void					ft_sconvp(va_list ap);
+void					ft_sconvi(va_list ap);
+void					ft_sconvo(va_list ap);
+void					ft_sconvx(va_list ap);
+void					ft_sconvxx(va_list ap);
+void					ft_sconvc(va_list ap);
+void					ft_sconvcc(va_list ap);
+void					ft_sconvper(void);
+void					ft_sconvu(va_list ap);
+void					ft_sconvuu(va_list ap);
 
 char					*ft_get_opt(char *str, int *i);
 char					*ft_get_size(char *str, int *i);
@@ -243,4 +261,24 @@ static const t_ft g_ft[] =
 	&ft_convcc,
 	&ft_convper
 };
+
+static const t_ft g_sft[] =
+{
+	&ft_sconvs,
+	&ft_sconvss,
+	&ft_sconvp,
+	&ft_sconvi,
+	&ft_sconvi,
+	&ft_sconvi,
+	&ft_sconvo,
+	&ft_sconvo,
+	&ft_sconvu,
+	&ft_sconvuu,
+	&ft_sconvx,
+	&ft_sconvxx,
+	&ft_sconvc,
+	&ft_sconvcc,
+	&ft_sconvper
+};
+
 #endif

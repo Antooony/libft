@@ -1,63 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   noconv.c                                           :+:      :+:    :+:   */
+/*   conv_uu_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/11 16:03:13 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 15:36:14 by adenis           ###   ########.fr       */
+/*   Created: 2017/01/25 15:44:12 by adenis            #+#    #+#             */
+/*   Updated: 2017/02/09 15:42:53 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_lenno(char **str)
+static void		ft_lenu(char **str)
 {
 	char	*tmp;
+	char	*tmp2;
 
 	tmp = NULL;
 	if (g_arg.len < (int)ft_strlen(*str))
 		return ;
 	else
 		tmp = ft_strnew(g_arg.len - ft_strlen(*str));
-	if (ft_strchr(g_arg.opt, '0') && !ft_strchr(g_arg.opt, '-'))
+	if (ft_strchr(g_arg.opt, '0') && !ft_strchr(g_arg.opt, '-')
+		&& !g_arg.vacc)
 		ft_memset(tmp, '0', (g_arg.len - ft_strlen(*str)));
 	else
 		ft_memset(tmp, ' ', (g_arg.len - ft_strlen(*str)));
+	tmp2 = ft_strnew(ft_strlen(tmp));
+	tmp2 = ft_strcpy(tmp2, tmp);
 	if (ft_strchr(g_arg.opt, '-'))
-		*str = ft_strjoinfree(*str, tmp);
+		*str = ft_strjoinfree(*str, tmp2);
 	else
+		*str = ft_strjoinfree(tmp2, *str);
+	ft_strdel(&tmp);
+}
+
+static void		ft_accu(char **str)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if (g_arg.acc > (int)ft_strlen(*str))
+	{
+		tmp = ft_strnew(g_arg.acc - ft_strlen(*str));
+		ft_memset(tmp, '0', (g_arg.acc - ft_strlen(*str)));
 		*str = ft_strjoinfree(tmp, *str);
+	}
 }
 
-void			ft_noconv(char *s, int *i)
+void			ft_sconvuu(va_list ap)
 {
 	char	*str;
 
-	if (*i == g_arg.max)
-		return ;
-	str = ft_strnew(1);
-	str[0] = s[*i];
+	ft_u_l(ap, &str);
+	if (g_arg.vacc && !g_arg.acc && !ft_strcmp(str, "0"))
+		str[0] = '\0';
+	if (g_arg.vacc)
+		ft_accu(&str);
 	if (g_arg.len)
-		ft_lenno(&str);
+		ft_lenu(&str);
 	g_arg.ret += ft_strlen(str);
-	(*i)++;
-	ft_putstr(str);
-	ft_strdel(&str);
-}
-
-void			ft_snoconv(char *s, int *i)
-{
-	char	*str;
-
-	if (*i == g_arg.max)
-		return ;
-	str = ft_strnew(1);
-	str[0] = s[*i];
-	if (g_arg.len)
-		ft_lenno(&str);
-	g_arg.ret += ft_strlen(str);
-	(*i)++;
 	join_out(str);
 }

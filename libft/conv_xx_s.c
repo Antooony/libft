@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_u.c                                           :+:      :+:    :+:   */
+/*   conv_xx_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 15:44:12 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 15:35:44 by adenis           ###   ########.fr       */
+/*   Created: 2017/01/11 15:43:41 by adenis            #+#    #+#             */
+/*   Updated: 2017/02/09 15:42:44 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_sizeu(va_list ap, char **str)
+static void			ft_sizexx(va_list ap, char **str, char *base, int val)
 {
 	if (ft_strlen(g_arg.size) == 1 && ft_strchr(SIZE, g_arg.size[0]))
-		g_size_u[ft_strchr(SIZE, g_arg.size[0]) - SIZE](ap, str);
+		g_size_x[ft_strchr(SIZE, g_arg.size[0]) - SIZE](ap, str, base, val);
 	else if (!ft_strcmp(g_arg.size, "ll"))
-		g_size_u[3](ap, str);
+		g_size_x[3](ap, str, base, val);
 	else if (!ft_strcmp(g_arg.size, "hh"))
-		g_size_u[4](ap, str);
+		g_size_x[4](ap, str, base, val);
 	else
-		*str = ft_itoa((uintmax_t)va_arg(ap, unsigned int));
+		*str = ft_itoa_base((uintmax_t)va_arg(ap, unsigned int), base, val);
 }
 
-static void		ft_lenu(char **str)
+static void			ft_lenxx(char **str)
 {
 	char	*tmp;
 	char	*tmp2;
@@ -48,7 +48,22 @@ static void		ft_lenu(char **str)
 	ft_strdel(&tmp);
 }
 
-static void		ft_accu(char **str)
+static void			ft_optxx(char **str)
+{
+	if (g_arg.zero)
+		return ;
+	if (ft_strchr(g_arg.opt, '#') && *str[0])
+	{
+		if (ft_strchr(g_arg.opt, '0') && (g_arg.len -= 2))
+		{
+			ft_lenxx(str);
+			g_arg.len = 0;
+		}
+		*str = ft_strjoinfree(ft_strdup("0X"), *str);
+	}
+}
+
+static void			ft_accxx(char **str)
 {
 	char	*tmp;
 
@@ -61,33 +76,24 @@ static void		ft_accu(char **str)
 	}
 }
 
-void			ft_convu(va_list ap)
+void				ft_sconvxx(va_list ap)
 {
 	char	*str;
 
-	ft_sizeu(ap, &str);
-	if (g_arg.vacc && !g_arg.acc && !ft_strcmp(str, "0"))
-		str[0] = '\0';
-	if (g_arg.vacc)
-		ft_accu(&str);
+	ft_sizexx(ap, &str, HEXAM, 16);
+	if (ft_strlen(str) == 1 && str[0] == '0')
+		g_arg.zero = 1;
+	if (g_arg.vacc && !g_arg.acc && str[0] == '0')
+	{
+		ft_strdel(&str);
+		str = ft_strnew(0);
+	}
+	if (g_arg.vacc && g_arg.acc)
+		ft_accxx(&str);
+	if (g_arg.opt)
+		ft_optxx(&str);
 	if (g_arg.len)
-		ft_lenu(&str);
-	g_arg.ret += ft_strlen(str);
-	ft_putstr(str);
-	ft_strdel(&str);
-}
-
-void			ft_sconvu(va_list ap)
-{
-	char	*str;
-
-	ft_sizeu(ap, &str);
-	if (g_arg.vacc && !g_arg.acc && !ft_strcmp(str, "0"))
-		str[0] = '\0';
-	if (g_arg.vacc)
-		ft_accu(&str);
-	if (g_arg.len)
-		ft_lenu(&str);
+		ft_lenxx(&str);
 	g_arg.ret += ft_strlen(str);
 	join_out(str);
 }
