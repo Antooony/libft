@@ -6,14 +6,14 @@
 #    By: adenis <adenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 16:45:23 by adenis            #+#    #+#              #
-#    Updated: 2017/02/09 15:45:48 by adenis           ###   ########.fr        #
+#    Updated: 2017/02/09 20:10:27 by adenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC				=	gcc
 NAME			=	libft.a
 FLAGS			=	-Wall -Wextra -Werror
 
-SRC				=	ft_atol.c ft_uitoa.c \
+SRC				=	ft_atol.c ft_uitoa.c ft_sorttab.c \
 					ft_atoi.c ft_strlcat.c ft_strncmp.c ft_strnstr.c ft_memcmp.c \
 					ft_memchr.c ft_memmove.c ft_memccpy.c ft_bzero.c ft_isalnum.c \
 					ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memcpy.c \

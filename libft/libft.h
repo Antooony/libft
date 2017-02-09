@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 16:46:11 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 15:46:23 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 20:09:55 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ char					*ft_strjoin(char const *s1, char const *s2);
 char					*ft_strtrim(const char *s);
 char					**ft_strsplit(char const *s, char c);
 
+void					ft_sort_tab(char **tab);
 int						ft_power(int nb, int power);
 int						ft_isalpha(int c);
 int						ft_isdigit(int c);
