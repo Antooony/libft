@@ -6,16 +6,16 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 15:04:50 by adenis            #+#    #+#             */
-/*   Updated: 2016/12/14 22:30:27 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 13:38:57 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_get_len(int *n, int *min)
+static intmax_t		ft_size(intmax_t *n, intmax_t *min)
 {
-	int		i;
-	int		len;
+	intmax_t		i;
+	intmax_t		len;
 
 	len = 1;
 	i = 1;
@@ -33,25 +33,18 @@ static int		ft_get_len(int *n, int *min)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char				*ft_itoa(intmax_t n)
 {
-	int		len;
-	int		min;
-	char	*str;
+	intmax_t		len;
+	intmax_t		min;
+	char			*str;
 
 	min = 0;
 	if (n == -2147483648)
-	{
-		str = ft_strnew(12);
-		ft_strcpy(str, "-2147483648");
-		str[11] = '\0';
-		return (str);
-	}
-	len = ft_get_len(&n, &min);
-	str = ft_strnew(len);
-	if (!str)
+		return (ft_strdup("-2147483648"));
+	len = ft_size(&n, &min);
+	if (!(str = ft_strnew(len)))
 		return (NULL);
-	str[len] = '\0';
 	if (min == 1)
 		str[0] = '-';
 	while (len-- > min)

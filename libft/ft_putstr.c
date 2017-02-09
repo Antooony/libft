@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:55:27 by adenis            #+#    #+#             */
-/*   Updated: 2016/11/11 16:44:19 by adenis           ###   ########.fr       */
+/*   Updated: 2017/01/30 13:16:22 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 void	ft_putstr(char const *s)
 {
-	if (s != NULL)
-	{
-		while (*s)
-		{
-			ft_putchar(*s);
-			s++;
-		}
-	}
+	if (s)
+		write(1, s, ft_strlen(s));
 }

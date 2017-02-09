@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:23:57 by adenis            #+#    #+#             */
-/*   Updated: 2016/11/14 12:34:46 by adenis           ###   ########.fr       */
+/*   Updated: 2017/01/04 16:45:00 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ char			*ft_strtrim(const char *s)
 	if (begin == end)
 		return (NULL);
 	size = end - begin;
-	str = ft_strnew(size + 1);
-	if (str == NULL)
-		return (NULL);
 	str = ft_strsub(s, begin, size + 1);
 	return (str);
 }

@@ -1,31 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 16:50:29 by adenis            #+#    #+#             */
-/*   Updated: 2017/01/25 20:37:43 by adenis           ###   ########.fr       */
+/*   Created: 2017/01/09 15:01:08 by adenis            #+#    #+#             */
+/*   Updated: 2017/01/26 23:16:45 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+uintmax_t		ft_poweru(uintmax_t n, uintmax_t base)
 {
-	char	*dest;
-	int		i;
+	int		count;
+
+	count = 0;
+	while (n > 0)
+	{
+		n = n / base;
+		count++;
+	}
+	return (count);
+}
+
+char			*ft_itoa_base(uintmax_t n, char *s, int base)
+{
+	uintmax_t		len;
+	char			*str;
+	uintmax_t		i;
 
 	i = 0;
-	dest = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
-	if (dest == NULL)
+	if (!s || !base)
 		return (NULL);
-	while (s1[i])
+	if (n == 0)
+		return (ft_strdup("0"));
+	i = ft_poweru(n, base);
+	len = i;
+	str = ft_strnew(len);
+	while (len)
 	{
-		dest[i] = s1[i];
-		i++;
+		str[len - 1] = s[(n % base)];
+		n = n / base;
+		len--;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (str);
 }

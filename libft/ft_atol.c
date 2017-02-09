@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 16:50:29 by adenis            #+#    #+#             */
-/*   Updated: 2017/01/25 20:37:43 by adenis           ###   ########.fr       */
+/*   Created: 2017/01/12 12:35:33 by adenis            #+#    #+#             */
+/*   Updated: 2017/01/12 12:54:20 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+long long		ft_atol(const char *str)
 {
-	char	*dest;
-	int		i;
+	int			i;
+	long long	nb;
+	long long	signe;
 
 	i = 0;
-	dest = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
-	if (dest == NULL)
-		return (NULL);
-	while (s1[i])
+	signe = 1;
+	nb = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
+		str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
 	{
-		dest[i] = s1[i];
+		signe = -1;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+		nb = nb * 10 + (str[i++] - '0');
+	return (nb * signe);
 }

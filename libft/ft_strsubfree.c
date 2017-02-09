@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strsubfree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 16:50:29 by adenis            #+#    #+#             */
-/*   Updated: 2017/01/25 20:37:43 by adenis           ###   ########.fr       */
+/*   Created: 2017/01/09 12:29:59 by adenis            #+#    #+#             */
+/*   Updated: 2017/01/09 15:51:29 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strsubfree(char *s, unsigned int start, size_t len)
 {
-	char	*dest;
-	int		i;
+	char		*str;
+	size_t		i;
+	size_t		begin;
 
 	i = 0;
-	dest = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
-	if (dest == NULL)
+	if (s == NULL)
 		return (NULL);
-	while (s1[i])
+	begin = (size_t)start;
+	str = ft_strnew(len);
+	if (str == NULL)
+		return (NULL);
+	while (i < len)
 	{
-		dest[i] = s1[i];
+		str[i] = s[begin + i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	str[i] = '\0';
+	ft_strdel(&s);
+	return (str);
 }
