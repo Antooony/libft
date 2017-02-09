@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 19:20:47 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 13:56:19 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 14:12:51 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static t_list	*ft_getfd(t_list *lst, int fd)
 	return (ft_check_fd(lst, fd));
 }
 
-int		get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
 	static t_list *lst;
 

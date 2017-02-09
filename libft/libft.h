@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 16:46:11 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 13:49:13 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/09 14:12:14 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@
 # define OCTAL "01234567"
 # define BUFF_SIZE 10000
 
-int						get_next_line(const int fd, char **line);
-
-
 typedef struct s_list	t_list;
 struct					s_list
 {
@@ -38,9 +35,9 @@ struct					s_list
 	t_list				*start;
 };
 
-typedef void		(*t_ft) ();
+typedef void			(*t_ft) ();
 
-typedef struct		s_args
+typedef struct			s_args
 {
 	char	*opt;
 	int		len;
@@ -52,8 +49,9 @@ typedef struct		s_args
 	int		sign;
 	int		zero;
 	int		max;
-}					t_args;
+}						t_args;
 
+int						get_next_line(const int fd, char **line);
 int						ft_printf(char *str, ...);
 
 char					*ft_checksign(char *str);
@@ -62,7 +60,7 @@ void					init_args(void);
 void					clean_args(void);
 void					print_args(void);
 void					ft_getargs(char *str, int *i, va_list ap);
-char					*wtoa(wchar_t);
+char					*wtoa(wchar_t c);
 char					*get_wstr(va_list ap);
 
 void					ft_conv(va_list ap, char *s, int *i);
