@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 17:10:43 by adenis            #+#    #+#             */
-/*   Updated: 2017/03/06 11:32:28 by adenis           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:45:18 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				ft_printf(char *str, ...)
 		exit(0);
 	va_start(ap, str);
 	i = 0;
-	ft_init(str, 0);
+	ft_init(str, 1);
 	while (str[i])
 	{
 		if (str[i] == '%' && (i += 1))
