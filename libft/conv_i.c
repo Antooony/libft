@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 15:58:20 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 13:33:33 by adenis           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:24:26 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ void			ft_convi(va_list ap)
 	g_arg.ret += ft_strlen(str);
 	if (ft_strchr(str, '+') || ft_strchr(str, '-'))
 		str = ft_checksign(str);
-	ft_putstr(str);
+	ft_putstr_fd(str, g_arg.fd);
 	ft_strdel(&str);
 }

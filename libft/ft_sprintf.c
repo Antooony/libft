@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 15:30:19 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 15:51:12 by adenis           ###   ########.fr       */
+/*   Updated: 2017/02/15 16:53:45 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int				ft_sprintf(char **dest, char *str, ...)
 		}
 	}
 	va_end(ap);
-	*dest = g_arg.out;
+	*dest = ft_strdup(g_arg.out);
 	return (g_arg.ret);
 }

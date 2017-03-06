@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sorttab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 20:07:12 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 20:07:57 by adenis           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:33:53 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static int		ft_issort(char **tab)
@@ -25,10 +26,11 @@ static int		ft_issort(char **tab)
 	return (1);
 }
 
-void				ft_sort_tab(char **tab)
+void			ft_sort_tab(char **tab)
 {
-	int	i = 0;
-	char *tmp;
+	int		i;
+	char	*tmp;
+
 	i = 0;
 	while (tab[i])
 	{

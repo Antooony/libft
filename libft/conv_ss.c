@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 21:11:46 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 13:33:53 by adenis           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:25:42 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void			ft_convss(va_list ap)
 		ft_lens(&str, s);
 	free(s);
 	g_arg.ret += ft_strlen(str);
-	ft_putstr(str);
+	ft_putstr_fd(str, g_arg.fd);
 	ft_strdel(&str);
 }

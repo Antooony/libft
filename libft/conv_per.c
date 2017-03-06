@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 15:52:42 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 15:34:49 by adenis           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:25:23 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			ft_convper(void)
 	if (g_arg.len)
 		ft_lenper(&str);
 	g_arg.ret += ft_strlen(str);
-	ft_putstr(str);
+	ft_putstr_fd(str, g_arg.fd);
 	ft_strdel(&str);
 }
 

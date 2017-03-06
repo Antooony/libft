@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 16:46:11 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 20:09:55 by adenis           ###   ########.fr       */
+/*   Updated: 2017/03/06 11:34:26 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef void			(*t_ft) ();
 
 typedef struct			s_args
 {
+	int		fd;
 	char	*opt;
 	int		len;
 	int		acc;
@@ -52,9 +53,10 @@ typedef struct			s_args
 	char	*out;
 }						t_args;
 
-int						get_next_line(const int fd, char **line);
-int						ft_sprintf(char **dest, char *str, ...);
 int						ft_printf(char *str, ...);
+int						ft_sprintf(char **dest, char *str, ...);
+int						ft_fprintf(int fd, char *str, ...);
+int						get_next_line(const int fd, char **line);
 
 char					*ft_checksign(char *str);
 int						ft_check_args(void);
@@ -140,7 +142,9 @@ void					ft_putstr_fd(char const *s, int fd);
 void					ft_putendl_fd(char const *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
 void					ft_putwchar(wchar_t c);
+void					ft_putwchar_fd(wchar_t c, int fd);
 void					ft_putwstr(wchar_t *s);
+void					ft_putwstr_fd(wchar_t *s, int fd);
 
 char					*ft_strdup(const char *s1);
 size_t					ft_strlen(const char *s);
