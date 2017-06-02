@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 12:29:59 by adenis            #+#    #+#             */
-/*   Updated: 2017/01/09 15:51:29 by adenis           ###   ########.fr       */
+/*   Updated: 2017/06/02 12:36:08 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ char	*ft_strsubfree(char *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (NULL);
 	begin = (size_t)start;
-	str = ft_strnew(len);
-	if (str == NULL)
+	if (!(str = ft_strnew(len)))
 		return (NULL);
 	while (i < len)
 	{

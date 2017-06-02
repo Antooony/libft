@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:39:50 by adenis            #+#    #+#             */
-/*   Updated: 2016/11/14 12:27:19 by adenis           ###   ########.fr       */
+/*   Updated: 2017/06/02 12:40:31 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 		else
 		{
 			new->content = (void *)malloc(sizeof(content) * content_size);
+			if (!new->content)
+				return (NULL);
 			ft_memcpy(new->content, content, content_size);
 			new->content_size = content_size;
 		}

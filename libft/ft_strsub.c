@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 17:37:33 by adenis            #+#    #+#             */
-/*   Updated: 2016/11/11 16:41:43 by adenis           ###   ########.fr       */
+/*   Updated: 2017/06/02 12:35:55 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	if (s == NULL)
 		return (NULL);
 	strt = (size_t)start;
-	str = ft_strnew(len);
-	if (str == NULL)
+	if (!(str = ft_strnew(len)))
 		return (NULL);
 	while (i < len)
 	{

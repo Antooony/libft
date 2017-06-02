@@ -6,7 +6,7 @@
 /*   By: adenis <adenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:03:13 by adenis            #+#    #+#             */
-/*   Updated: 2017/02/09 15:36:14 by adenis           ###   ########.fr       */
+/*   Updated: 2017/06/02 12:37:38 by adenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void			ft_noconv(char *s, int *i)
 
 	if (*i == g_arg.max)
 		return ;
-	str = ft_strnew(1);
+	if (!(str = ft_strnew(1)))
+		return ;
 	str[0] = s[*i];
 	if (g_arg.len)
 		ft_lenno(&str);
